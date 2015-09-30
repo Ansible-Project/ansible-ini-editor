@@ -43,12 +43,12 @@ import org.ini4j.Profile.Section;
 public class AnsibleIni2 {
     
     /** Interface Operation*/
-    public static interface IAnsibleSectionOperation {
+    public static interface IMapSectionOperation {
         void update(Map<String, Section> map);
     }
     
     /** Operation Add */
-    public static class Add implements IAnsibleSectionOperation {
+    public static class Add implements IMapSectionOperation {
         private String mSectionKey;
         private String mKey;
         private String mValue;
@@ -75,7 +75,7 @@ public class AnsibleIni2 {
     }
     
     /** Operation Modify */
-    public static class Modify implements IAnsibleSectionOperation {
+    public static class Modify implements IMapSectionOperation {
         private String mSectionKey;
         private String mKey;
         private String mValue;
@@ -101,7 +101,7 @@ public class AnsibleIni2 {
     }
     
     /** Operation Remove*/
-    public static class Remove implements IAnsibleSectionOperation {
+    public static class Remove implements IMapSectionOperation {
         private String mSectionKey;
         private String mKey;
         
@@ -179,7 +179,7 @@ public class AnsibleIni2 {
      * 
      * @param op
      */
-    public void updateSection(IAnsibleSectionOperation op) {
+    public void updateSection(IMapSectionOperation op) {
         if (op == null) {
             return;
         }

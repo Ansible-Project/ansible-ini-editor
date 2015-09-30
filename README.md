@@ -1,4 +1,4 @@
-# AnsibleIniConsole
+# AnsibleIniEditor
 * Provide function for updating ansible inventory file
 
 ## Preparation

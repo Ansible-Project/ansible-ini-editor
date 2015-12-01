@@ -1,23 +1,43 @@
+[servers]
+play
+database
+
+[play:children]
+frontend
+backend
+builder
+
 [frontend]
 frontend01.hsingyuanlo.com
+frontend02.hsingyuanlo.com
 
 [frontend:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
+animation_enabled=false
 
 [backend]
 backend01.hsingyuanlo.com
+backend02.hsingyuanlo.com
+backend03.hsingyuanlo.com
+backend04.hsingyuanlo.com
+backend05.hsingyuanlo.com
 
 [backend:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
+super_engine_enabled=false
 
 [builder]
 builder01.hsingyuanlo.com
+builder02.hsingyuanlo.com
+cache_enabled=false
 
 [builder:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
 
 [database]
 mongodb01.hsingyuanlo.com
+mongodb02.hsingyuanlo.com
+mongodb03.hsingyuanlo.com
 
 [database:vars]
 ansible_ssh_private_key_file=./ssh_key.pem

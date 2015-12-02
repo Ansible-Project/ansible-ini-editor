@@ -10,7 +10,7 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.hsingyuanlo.ansible.module.AnsibleIni;
+import com.hsingyuanlo.ansible.core.AnsibleIni;
 
 public class JsonUtil {
     

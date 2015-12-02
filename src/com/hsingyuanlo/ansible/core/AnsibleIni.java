@@ -1,4 +1,4 @@
-package com.hsingyuanlo.ansible.module;
+package com.hsingyuanlo.ansible.core;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

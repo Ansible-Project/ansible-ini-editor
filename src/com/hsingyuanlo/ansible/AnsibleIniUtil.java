@@ -3,7 +3,7 @@ package com.hsingyuanlo.ansible;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hsingyuanlo.ansible.module.AnsibleIni;
+import com.hsingyuanlo.ansible.core.AnsibleIni;
 
 public class AnsibleIniUtil {
     

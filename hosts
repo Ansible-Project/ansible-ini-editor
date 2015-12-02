@@ -29,10 +29,10 @@ super_engine_enabled=false
 [builder]
 builder01.hsingyuanlo.com
 builder02.hsingyuanlo.com
-cache_enabled=false
 
 [builder:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
+cache_enabled=false
 
 [database]
 mongodb01.hsingyuanlo.com

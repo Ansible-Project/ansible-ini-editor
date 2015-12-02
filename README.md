@@ -4,13 +4,13 @@
 ## Preparation
 * Install Java sdk
 * Download ini4j library
+* Download json library
 
-## Function
+## Function (AnsibleIni.java)
 * Read inventory file  
 * Update list section  
 * Update map section (Add, Modify, Remove)  
-* Write inventory file  
+* Write inventory file 
 
-# Core class
-* AnsibleIni (deprecated)
-* AnsibleIni2
+## Format conversion
+* Support json format (see JsonUtil.java)  

@@ -1,6 +1,6 @@
-package com.hsingyuanlo.ansible;
+package idv.hsingyuanlo.ansible;
 
-import com.hsingyuanlo.ansible.format.JsonUtil;
+import idv.hsingyuanlo.ansible.format.JsonUtil;
 
 public class Console {
     public static void main (String[] args) {

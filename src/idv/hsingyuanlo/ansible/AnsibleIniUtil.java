@@ -1,9 +1,9 @@
-package com.hsingyuanlo.ansible;
+package idv.hsingyuanlo.ansible;
+
+import idv.hsingyuanlo.ansible.core.AnsibleIni;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.hsingyuanlo.ansible.core.AnsibleIni;
 
 public class AnsibleIniUtil {
     

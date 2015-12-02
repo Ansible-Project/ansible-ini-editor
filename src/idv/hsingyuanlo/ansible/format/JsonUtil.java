@@ -1,4 +1,6 @@
-package com.hsingyuanlo.ansible.format;
+package idv.hsingyuanlo.ansible.format;
+
+import idv.hsingyuanlo.ansible.core.AnsibleIni;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,8 +11,6 @@ import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.hsingyuanlo.ansible.core.AnsibleIni;
 
 public class JsonUtil {
     

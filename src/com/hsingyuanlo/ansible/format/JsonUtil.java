@@ -1,4 +1,4 @@
-package com.hsingyuanlo.ansible.output;
+package com.hsingyuanlo.ansible.format;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

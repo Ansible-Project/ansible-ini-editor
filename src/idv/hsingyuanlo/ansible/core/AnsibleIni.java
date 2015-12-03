@@ -156,7 +156,7 @@ public class AnsibleIni {
      * @param inFilePath
      */
     public void read(String iniFilePath) {
-        read_inner(iniFilePath);
+        readFromFile(iniFilePath);
     }
     
     /**
@@ -270,73 +270,6 @@ public class AnsibleIni {
             return section.get(key);
         }
         return null;
-    }
-    
-    /**
-     * Reader
-     * @param inFilePath
-     */
-    private void read_inner(String inFilePath) {
-        mHostMap.clear();
-        mSectionMap.clear();
-        
-        Map<String, String> blockMap = new HashMap<String, String>();
-        BufferedReader bufReader = null;
-        try {
-            String line = null;
-            String section = null;
-            String value = null;
-            String pattern = "^ *\\[.*\\] *$";
-            
-            bufReader = new BufferedReader(new FileReader(inFilePath));
-            while ((line = bufReader.readLine()) != null) {
-                
-                if (line.matches(pattern)) {
-                    if (section != null && value != null) {
-                        blockMap.put(section, value);
-                    }
-                    section = line.substring(line.indexOf("[")+1, line.lastIndexOf("]")).trim();
-                    value = line.trim();
-                    value += "\n";
-                } else {
-                    if (value != null) {
-                        value += line;
-                        value += "\n";
-                    }
-                }
-            }
-            
-            if (section != null && value != null) {
-                blockMap.put(section, value);
-            }
-            
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            blockMap.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
-            blockMap.clear();
-        } finally {
-            if (bufReader != null) {
-                try {
-                    bufReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        
-        for (String key : blockMap.keySet()) {
-            if (mRule.isMapSection(key)) {
-                Section section = parseStringToSection(key, blockMap.get(key));
-                if (section != null) {
-                    mSectionMap.put(key, section);
-                }
-            } else {
-                List<String> list = parseStringToList(key, blockMap.get(key));
-                mHostMap.put(key, list);
-            }
-        }
     }
     
     /**

@@ -18,6 +18,32 @@ public class JsonUtil {
         
     }
     
+    public static String loadJsonFile(String jsonFileName) {
+        BufferedReader jsonReader = null;
+        StringBuilder builder = new StringBuilder();
+        try {
+            jsonReader = new BufferedReader(new FileReader(jsonFileName));
+            
+            String line = null;
+            while ((line = jsonReader.readLine()) != null) {
+                builder.append(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (jsonReader != null) {
+                try {
+                    jsonReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return builder.toString();
+    }
+    
     public static String convertAnsibleIniStringToJsonString(String ansibleIniText) {
         //
         AnsibleIni ansibleIni = new AnsibleIni();
@@ -60,30 +86,7 @@ public class JsonUtil {
     }
     
     public static String convertJsonFileToAnsibleIniString(String jsonFileName) {
-        BufferedReader jsonReader = null;
-        StringBuilder builder = new StringBuilder();
-        try {
-            jsonReader = new BufferedReader(new FileReader(jsonFileName));
-            
-            String line = null;
-            while ((line = jsonReader.readLine()) != null) {
-                builder.append(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (jsonReader != null) {
-                try {
-                    jsonReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        
-        return convertJsonStringToAnsibleIniString(builder.toString());
+        return convertJsonStringToAnsibleIniString(loadJsonFile(jsonFileName));
     }
     
     public static String convertJsonStringToAnsibleIniString(String jsonText) {

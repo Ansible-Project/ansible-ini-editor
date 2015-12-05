@@ -41,7 +41,13 @@ public class JsonUtil {
                 }
             }
         }
-        return builder.toString();
+        
+        try { 
+            new JSONObject(jsonFileName);   // use exception to test JSON format
+            return builder.toString();
+        } catch (Exception e) {
+            return "{}";    // return empty JSON data
+        }
     }
     
     public static String convertAnsibleIniStringToJsonString(String ansibleIniText) {

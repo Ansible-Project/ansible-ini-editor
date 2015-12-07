@@ -14,6 +14,8 @@ frontend02.hsingyuanlo.com
 [frontend:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
 animation_enabled=false
+html5_enabled=true;
+video_url="http://vidio_url/demo"
 
 [backend]
 backend01.hsingyuanlo.com
@@ -25,6 +27,7 @@ backend05.hsingyuanlo.com
 [backend:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
 super_engine_enabled=false
+auth_enabled=true
 
 [builder]
 builder01.hsingyuanlo.com
@@ -33,6 +36,7 @@ builder02.hsingyuanlo.com
 [builder:vars]
 ansible_ssh_private_key_file=./ssh_key.pem
 cache_enabled=false
+multiple_thread_enabled=false;
 
 [database]
 mongodb01.hsingyuanlo.com

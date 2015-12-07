@@ -12,6 +12,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -210,7 +211,6 @@ public class AnsibleIni {
         }
         op.update(mSectionMap);
     }
-    
     /**
      * 
      * @return host key set
@@ -242,20 +242,12 @@ public class AnsibleIni {
     
     /**
      * 
-     * @param key
-     * @return
-     */
-    public Section getSection(String sectionKey) {
-        return mSectionMap.get(sectionKey);
-    }
-    
-    /**
-     * 
      * @param sectionKey
      * @return item keys in section
      */
     public Set<String> getSectionItemKeys(String sectionKey) {
-        return mSectionMap.get(sectionKey).keySet();
+        Section section = mSectionMap.get(sectionKey);
+        return section == null? new HashSet<String>(): section.keySet();
     }
     
     /**
@@ -269,7 +261,7 @@ public class AnsibleIni {
         if (section != null && section.containsKey(key)) {
             return section.get(key);
         }
-        return null;
+        return "";
     }
     
     /**

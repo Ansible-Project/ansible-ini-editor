@@ -1,10 +1,31 @@
 package idv.hsingyuanlo.ansible;
 
+import java.util.Set;
+
+import idv.hsingyuanlo.ansible.core.AnsibleIni;
+import idv.hsingyuanlo.ansible.core.AnsibleIniUtil;
 import idv.hsingyuanlo.ansible.format.JsonUtil;
 
 public class Console {
     public static void main (String[] args) {
-        demoJsonConversion();
+        demoOperateAnsibleIni();
+    }
+    
+    public static void demoOperateAnsibleIni() {
+        AnsibleIni ini = new AnsibleIni();
+        ini.read("hosts");
+        
+        AnsibleIniUtil.debug(ini);
+        
+        Set<String> sectionKeys = ini.getSectionKeys();
+        for (String sectionKey : sectionKeys) {
+            Set<String> sectionItemKeys = ini.getSectionItemKeys(sectionKey);
+            for (String sectionItemKey : sectionItemKeys) {
+                AnsibleIniUtil.modifySectionItem(ini, sectionKey, sectionItemKey, "true");
+            }
+        }
+        
+        AnsibleIniUtil.debug(ini);
     }
     
     public static void demoJsonConversion() {
@@ -27,32 +48,5 @@ public class Console {
         System.out.println("==================");
         String json2 = JsonUtil.convertAnsibleIniStringToJsonString(ini1);
         System.out.println(json2);
-    }
-    
-    public static void demoModifyAndSplitAnsibleIni (String[] args) {
-        if (args.length != 3) {
-            System.out.println("Usage: java -jar ansible.jar [service] [input] [output]");
-            return;
-        }
-        String service = args[0];
-        String inFilePath = args[1];
-        String outFilePath = args[2];
-        
-        if (inFilePath.equals(outFilePath)) {
-            System.out.println("Error: input and output are the same file");
-            return;
-        }
-        
-        if (service.equals("frontend")) {
-            AnsibleIniUtil.selectFrontend(inFilePath, outFilePath);
-        } else if (service.equals("backend")) {
-            AnsibleIniUtil.selectBackend(inFilePath, outFilePath);
-        } else if (service.equals("builder")) {
-            AnsibleIniUtil.selectBuilder(inFilePath, outFilePath);
-        } else if (service.equals("database")) {
-            AnsibleIniUtil.selectDatabase(inFilePath, outFilePath);
-        }
-        System.out.println("["+service+"] "+outFilePath+" is generated !!");
-        
     }
 }

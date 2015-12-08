@@ -224,8 +224,8 @@ public class AnsibleIni {
      * @param key
      * @return
      */
-    public List<String> getHosts(String sectionKey) {
-        List<String> hosts = mHostMap.get(sectionKey);
+    public List<String> getHosts(String hostKey) {
+        List<String> hosts = mHostMap.get(hostKey);
         if (hosts == null) {
             return new ArrayList<String>();
         }
@@ -261,7 +261,7 @@ public class AnsibleIni {
         if (section != null && section.containsKey(key)) {
             return section.get(key);
         }
-        return "";
+        return null;
     }
     
     /**
